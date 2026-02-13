@@ -1,6 +1,17 @@
-const PHONE = "50765905100";
+// 1. Lista de vendedores
+const VENDEDORES = [
+    { nombre: "Vendedor 1", numero: "50760000001" },
+    { nombre: "Vendedor 2", numero: "50760000002" },
+    { nombre: "Vendedor 3", numero: "50760000003" },
+    { nombre: "Vendedor 4", numero: "50760000004" },
+    { nombre: "Vendedor 5", numero: "50760000005" }
+];
+
+// 2. Variables de estado
 let seleccion = JSON.parse(localStorage.getItem("seleccion")) || [];
-let productoActual = null;
+let productoActual = null; // <--- ESTA ES LA QUE FALTABA
+let tiempoRestante = 6;
+let intervaloTimer = null;
 
 /* ================= INICIALIZAR ================= */
 document.addEventListener("DOMContentLoaded", () => {
@@ -221,18 +232,52 @@ function actualizarBotonWA(){
   }
 }
 
-function enviarWA(){
-  if(!seleccion.length) return;
+function enviarWA() {
+    if (!seleccion.length) return;
+    
+    // Mostrar el modal de vendedores
+    const modalVen = document.getElementById("modalVendedor");
+    const listaVen = document.getElementById("listaVendedores");
+    const timerDisplay = document.getElementById("timer");
+    
+    listaVen.innerHTML = ""; // Limpiar
+    modalVen.style.display = "flex";
+    tiempoRestante = 6;
+    timerDisplay.textContent = tiempoRestante;
 
-  let msg = "Hola Home Style 507, deseo consultar:\n\n";
-  seleccion.forEach((p,i)=>{
-    msg += `${i+1}. ${p}\n`;
-  });
+    // Crear botones de vendedores
+    VENDEDORES.forEach(v => {
+        const btn = document.createElement("button");
+        btn.className = "btn-vendedor";
+        btn.textContent = v.nombre;
+        btn.onclick = () => finalizarYEnviar(v.numero);
+        listaVen.appendChild(btn);
+    });
 
-  window.open(
-    `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,
-    "_blank"
-  );
+    // Iniciar cuenta regresiva
+    intervaloTimer = setInterval(() => {
+        tiempoRestante--;
+        timerDisplay.textContent = tiempoRestante;
+        if (tiempoRestante <= 0) {
+            clearInterval(intervaloTimer);
+            // Selección aleatoria si se acaba el tiempo
+            const azar = VENDEDORES[Math.floor(Math.random() * VENDEDORES.length)];
+            finalizarYEnviar(azar.numero);
+        }
+    }, 1000);
+}
+
+function finalizarYEnviar(numeroDestino) {
+    clearInterval(intervaloTimer);
+    document.getElementById("modalVendedor").style.display = "none";
+
+    let msg = "¡Hola Home Style 507! 👋\nMe gustaría consultar disponibilidad de:\n\n";
+    seleccion.forEach((prod, i) => {
+        msg += `• ${prod}\n`;
+    });
+    msg += `\nGracias.`;
+
+    window.open(`https://wa.me/${numeroDestino}?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
 /* ================= BUSCADOR ================= */

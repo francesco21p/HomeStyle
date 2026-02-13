@@ -44,6 +44,24 @@
 </div>
 </section>
 
+<!-- ================= COMEDOR ================= -->
+<section class="categoria" data-categoria="Comedor">
+<h2 class="category-title">Comedor</h2>
+<div class="grid">
+  <article class="card" 
+    data-nombre="Juego de Comedor 6 Puestos con Ruchas y Mantel" 
+    data-descripcion="Dale un toque de elegancia y protección a tu hogar con este set completo. Incluye 6 forros para sillas diseñados con delicadas ruchas que aportan un estilo clásico y sofisticado, además de un mantel a juego. Fabricado en tela elástica de alta calidad que se ajusta perfectamente y es fácil de lavar. Ideal para renovar tu comedor al instante." 
+    data-precio="$26.75" 
+    data-images="img/comedor/01/1.jpeg,img/comedor/01/2.jpeg,img/comedor/01/3.jpeg,img/comedor/01/4.jpeg,img/comedor/01/5.jpeg,img/comedor/01/6.jpeg">
+    <img onclick="abrirModal(this)" src="img/comedor/01/1.jpeg">
+    <div class="card-info">
+        <h3>Juego de Comedor 6 Puestos</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+</div>
+</section>
+
 <!-- ================= SÁBANAS ================= -->
 <section class="categoria" data-categoria="Sábanas">
 <h2 class="category-title">Sábanas</h2>
@@ -92,6 +110,42 @@
     <img onclick="abrirModal(this)" src="img/sabanas/04/10.jpg">
     <div class="card-info">
         <h3>Sábanas Bouquetex Pera (King)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Sábanas Bouquetex Premium Unicolor - Full" 
+    data-descripcion="Línea Premium de Bouquetex en colores sólidos. Aporta serenidad y elegancia a tu habitación con este juego de sábanas de tacto sedoso y acabado mate. El set incluye: 2 sábanas de alta resistencia y 2 fundas de almohada. Tejido transpirable de fácil secado, diseñado para mantener su color original lavado tras lavado." 
+    data-precio="$22.47" 
+    data-images="img/sabanas/05/1.jpeg,img/sabanas/05/2.jpeg,img/sabanas/05/3.jpeg,img/sabanas/05/4.jpeg,img/sabanas/05/5.jpeg,img/sabanas/05/6.jpeg,img/sabanas/05/7.jpeg,img/sabanas/05/8.jpeg,img/sabanas/05/9.jpeg,img/sabanas/05/10.jpeg,img/sabanas/05/11.jpeg,img/sabanas/05/12.jpeg,img/sabanas/05/13.jpeg,img/sabanas/05/14.jpeg">
+    <img onclick="abrirModal(this)" src="img/sabanas/05/2.jpeg">
+    <div class="card-info">
+        <h3>Sábanas Bouquetex Unicolor (Full)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Sábanas Bouquetex Premium Unicolor - Queen" 
+    data-descripcion="Sofisticación unicolor para tu cama Queen. Este juego de sábanas Bouquetex Premium destaca por su suavidad superior y frescura inigualable. Ideal para quienes buscan un estilo moderno y limpio. Incluye: 2 sábanas (plana y ajustable) y 2 fundas de almohada. Hipoalergénicas y resistentes a las arrugas." 
+    data-precio="$23.54" 
+    data-images="img/sabanas/06/1.jpeg,img/sabanas/06/2.jpeg,img/sabanas/06/3.jpeg,img/sabanas/06/4.jpeg,img/sabanas/06/5.jpeg,img/sabanas/06/6.jpeg,img/sabanas/06/7.jpeg,img/sabanas/06/8.jpeg,img/sabanas/06/9.jpeg,img/sabanas/06/10.jpeg,img/sabanas/06/11.jpeg,img/sabanas/06/12.jpeg,img/sabanas/06/13.jpeg,img/sabanas/06/14.jpeg">
+    <img onclick="abrirModal(this)" src="img/sabanas/06/10.jpeg">
+    <div class="card-info">
+        <h3>Sábanas Bouquetex Unicolor (Queen)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Sábanas Bouquetex Premium Unicolor - King" 
+    data-descripcion="Máximo lujo en formato King. La línea unicolor Premium de Bouquetex ofrece una experiencia de descanso de hotel en tu hogar. Tejido de alta densidad que garantiza durabilidad y una caída perfecta sobre el colchón. El set incluye: 2 sábanas amplias y 2 fundas de almohada King. Elegancia minimalista que nunca pasa de moda." 
+    data-precio="$25.68" 
+    data-images="img/sabanas/07/1.jpeg,img/sabanas/07/2.jpeg,img/sabanas/07/3.jpeg,img/sabanas/07/4.jpeg,img/sabanas/07/5.jpeg,img/sabanas/07/6.jpeg,img/sabanas/07/7.jpeg,img/sabanas/07/8.jpeg,img/sabanas/07/9.jpeg,img/sabanas/07/10.jpeg,img/sabanas/07/11.jpeg,img/sabanas/07/12.jpeg,img/sabanas/07/13.jpeg,img/sabanas/07/14.jpeg">
+    <img onclick="abrirModal(this)" src="img/sabanas/07/6.jpeg">
+    <div class="card-info">
+        <h3>Sábanas Bouquetex Unicolor (King)</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
     </div>
 </article>
@@ -202,6 +256,14 @@
 
 <div class="float-wa" onclick="enviarWA()">
   Consultar (<span id="count">0</span>)
+</div>
+
+<div id="modalVendedor" style="display:none;" class="modal-vendedor-overlay">
+  <div class="modal-vendedor-caja">
+    <h3>¿Con quién deseas chatear?</h3>
+    <p>Selecciona un asesor o espera <span id="timer">6</span>s para asignación automática.</p>
+    <div id="listaVendedores"></div>
+  </div>
 </div>
 
 <script src="script.js"></script>
