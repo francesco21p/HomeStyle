@@ -1,16 +1,16 @@
 // 1. Lista de vendedores
 const VENDEDORES = [
-    { nombre: "Vendedor 1", numero: "50760000001" },
-    { nombre: "Vendedor 2", numero: "50760000002" },
-    { nombre: "Vendedor 3", numero: "50760000003" },
-    { nombre: "Vendedor 4", numero: "50760000004" },
-    { nombre: "Vendedor 5", numero: "50760000005" }
+    { nombre: "Christian", numero: "50760000001" },
+    { nombre: "Yoli", numero: "50760000002" },
+    { nombre: "Angel", numero: "50762606548" },
+    { nombre: "Genesis", numero: "50760000004" },
+    { nombre: "Otro F/M", numero: "50760000005" }
 ];
 
 // 2. Variables de estado
 let seleccion = JSON.parse(localStorage.getItem("seleccion")) || [];
 let productoActual = null; // <--- ESTA ES LA QUE FALTABA
-let tiempoRestante = 6;
+let tiempoRestante = 10;
 let intervaloTimer = null;
 
 /* ================= INICIALIZAR ================= */
@@ -18,89 +18,174 @@ document.addEventListener("DOMContentLoaded", () => {
   restaurarSeleccion();
   actualizarContador();
   actualizarBotonWA();
-  cerrarModal(); // Asegurar que el modal está cerrado al inicio
+  cerrarModal(); 
+  
+  // Configurar event listeners para reemplazar inline handlers
+  configurarEventListeners();
+  
+  // Iniciar carruseles en las cartas de productos
+  iniciarCarruelesCartas();
 });
+
+/* ================= CONFIGURAR EVENT LISTENERS ================= */
+function configurarEventListeners() {
+  // Buscador
+  const searchInput = document.getElementById("search");
+  if (searchInput) {
+    searchInput.addEventListener("input", filtrar);
+  }
+
+  // Botones de categoría
+  document.querySelectorAll("#catNav button").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const category = e.target.dataset.category;
+      if (category) {
+        filtrarCategoria(category, e.target);
+      }
+    });
+  });
+
+  // Imágenes de productos para abrir modal
+  document.querySelectorAll(".card img").forEach(img => {
+    img.style.cursor = "pointer";
+    img.addEventListener("click", () => abrirModal(img));
+  });
+
+  // Botón flotante con teclado
+  const floatBtn = document.querySelector(".float-wa");
+  if (floatBtn) {
+    floatBtn.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        enviarWA();
+      }
+    });
+  }
+}
+
+/* ================= CARRUSEL EN CARTAS ================= */
+function iniciarCarruelesCartas() {
+  document.querySelectorAll(".card").forEach((card, index) => {
+    const imgs = (card.dataset.images || '').split(',').map(s => s.trim()).filter(Boolean);
+    
+    if (imgs.length > 1) {
+      // Iniciar en índice aleatorio
+      const indicePrincipal = Math.floor(Math.random() * imgs.length);
+      
+      // Guardar datos en el card
+      card.dataset.images = imgs.join(',');
+      card.dataset.imgIndex = indicePrincipal;
+      
+      // Actualizar imagen inicial
+      const img = card.querySelector('img');
+      if (img) {
+        img.src = imgs[indicePrincipal];
+      }
+      
+      // Iniciar rotación cada 5 segundos
+      setInterval(() => {
+        const imgActual = card.querySelector('img');
+        if (imgActual) {
+          let nuevoIndex = parseInt(card.dataset.imgIndex) || 0;
+          nuevoIndex = (nuevoIndex + 1) % imgs.length;
+          card.dataset.imgIndex = nuevoIndex;
+          imgActual.src = imgs[nuevoIndex];
+        }
+      }, 5000);
+    }
+  });
+}
 
 /* ================= ABRIR MODAL ================= */
 function abrirModal(img){
-  const card = img.closest(".card");
-  const nombre = card.dataset.nombre;
-  const descripcion = card.dataset.descripcion || "Producto de alta calidad.";
-  const agotado = card.classList.contains("agotado");
-  productoActual = nombre;
+  try {
+    const card = img.closest(".card");
+    if (!card) return;
+    
+    const nombre = card.dataset.nombre || "Producto";
+    const descripcion = card.dataset.descripcion || "Producto de alta calidad.";
+    const agotado = card.classList.contains("agotado");
+    productoActual = nombre;
 
-  document.getElementById("modalImg").src = img.src;
-  document.getElementById("modalNombre").textContent = nombre;
-  document.getElementById("modalDesc").textContent = descripcion;
-  // Mostrar precio si existe en el dataset (data-precio)
-  const precioElem = document.getElementById("modalPrecio");
-  const precio = card.dataset.precio || card.dataset.price || null;
-  if(precio){
-    precioElem.style.display = "block";
-    precioElem.textContent = precio;
-  } else {
-    precioElem.style.display = "none";
-    precioElem.textContent = "";
-  }
-
-  // --- Carousel automático: leer imágenes y empezar interval ---
-  // Limpiar interval previo si existe
-  if(window.modalInterval){
-    clearInterval(window.modalInterval);
-    window.modalInterval = null;
-  }
-
-  // Obtener imágenes desde data-images; si no existe, usar la imagen del card como fallback
-  let imgs = (card.dataset.images || '').split(',').map(s=>s.trim()).filter(Boolean);
-  if(!imgs.length){
-    const cardImg = card.querySelector('img');
-    if(cardImg && cardImg.src){
-      imgs = [cardImg.src];
-    }
-  }
-
-  if(imgs.length){
-    window.modalImages = imgs;
-    window.modalIndex = 0;
-    // mostrar la primera imagen del conjunto
-    document.getElementById("modalImg").src = window.modalImages[0];
-    // iniciar rotación automática solo si hay más de una imagen
-    if(window.modalImages.length > 1){
-      window.modalInterval = setInterval(()=>{
-        window.modalIndex = (window.modalIndex + 1) % window.modalImages.length;
-        document.getElementById("modalImg").src = window.modalImages[window.modalIndex];
-      }, 2500);
+    document.getElementById("modalImg").src = img.src;
+    document.getElementById("modalImg").alt = nombre;
+    
+    // Usar textContent en lugar de innerHTML para seguridad
+    document.getElementById("modalNombre").textContent = nombre;
+    document.getElementById("modalDesc").textContent = descripcion;
+    
+    // Mostrar precio si existe en el dataset (data-precio)
+    const precioElem = document.getElementById("modalPrecio");
+    const precio = card.dataset.precio || card.dataset.price || null;
+    if(precio){
+      precioElem.style.display = "block";
+      precioElem.textContent = precio;
     } else {
-      // asegurar que no haya interval activo
-      if(window.modalInterval){
-        clearInterval(window.modalInterval);
-        window.modalInterval = null;
+      precioElem.style.display = "none";
+      precioElem.textContent = "";
+    }
+
+    // --- Carousel automático: leer imágenes y empezar interval ---
+    // Limpiar interval previo si existe
+    if(window.modalInterval){
+      clearInterval(window.modalInterval);
+      window.modalInterval = null;
+    }
+
+    // Obtener imágenes desde data-images; si no existe, usar la imagen del card como fallback
+    let imgs = (card.dataset.images || '').split(',').map(s=>s.trim()).filter(Boolean);
+    if(!imgs.length){
+      const cardImg = card.querySelector('img');
+      if(cardImg && cardImg.src){
+        imgs = [cardImg.src];
       }
     }
-  } else {
-    window.modalImages = null;
-    window.modalIndex = null;
-  }
 
-  const modalBtn = document.getElementById("modalBtn");
-  
-  if(agotado){
-    modalBtn.disabled = true;
-    modalBtn.style.backgroundColor = "#a0a0a0";
-    modalBtn.textContent = "Producto Agotado";
-  } else if(seleccion.includes(nombre)){
-    modalBtn.disabled = false;
-    modalBtn.classList.add("selected");
-    modalBtn.style.backgroundColor = "var(--wa)";
-    modalBtn.textContent = "Eliminar de consulta";
-  } else {
-    modalBtn.disabled = false;
-    modalBtn.classList.remove("selected");
-    modalBtn.style.backgroundColor = "var(--primary)";
-    modalBtn.textContent = "Agregar a consulta";
-  }
+    if(imgs.length){
+      window.modalImages = imgs;
+      window.modalIndex = 0;
+      // mostrar la primera imagen del conjunto
+      document.getElementById("modalImg").src = window.modalImages[0];
+      // iniciar rotación automática solo si hay más de una imagen
+      if(window.modalImages.length > 1){
+        window.modalInterval = setInterval(()=>{
+          window.modalIndex = (window.modalIndex + 1) % window.modalImages.length;
+          document.getElementById("modalImg").src = window.modalImages[window.modalIndex];
+        }, 2500);
+      } else {
+        // asegurar que no haya interval activo
+        if(window.modalInterval){
+          clearInterval(window.modalInterval);
+          window.modalInterval = null;
+        }
+      }
+    } else {
+      window.modalImages = null;
+      window.modalIndex = null;
+    }
 
-  document.getElementById("modalImagen").classList.add("activo");
+    const modalBtn = document.getElementById("modalBtn");
+    
+    if(agotado){
+      modalBtn.disabled = true;
+      modalBtn.style.backgroundColor = "#a0a0a0";
+      modalBtn.textContent = "Producto Agotado";
+    } else if(seleccion.includes(nombre)){
+      modalBtn.disabled = false;
+      modalBtn.classList.add("selected");
+      modalBtn.style.backgroundColor = "var(--wa)";
+      modalBtn.textContent = "Eliminar de consulta";
+    } else {
+      modalBtn.disabled = false;
+      modalBtn.classList.remove("selected");
+      modalBtn.style.backgroundColor = "var(--primary)";
+      modalBtn.textContent = "Agregar a consulta";
+    }
+
+    document.getElementById("modalImagen").classList.add("activo");
+  } catch (error) {
+    console.error("Error al abrir modal:", error);
+  }
 }
 
 /* ================= CERRAR MODAL ================= */
@@ -128,7 +213,9 @@ function agregarDelModal(){
   
   // Obtener la card actual del producto
   const cardActual = document.querySelector(`.card[data-nombre="${productoActual}"]`);
-  if(cardActual && cardActual.classList.contains("agotado")) return; // No permite si está agotado
+  if(cardActual && cardActual.classList.contains("agotado")) return;
+  
+  const esAgregando = !seleccion.includes(productoActual);
   
   if(seleccion.includes(productoActual)){
     seleccion = seleccion.filter(p => p !== productoActual);
@@ -152,6 +239,11 @@ function agregarDelModal(){
 
   // Actualizar estado en la card
   restaurarSeleccion();
+  
+  // Cerrar modal SOLO si se está agregando a consulta (no si se elimina)
+  if(esAgregando){
+    setTimeout(() => cerrarModal(), 300);
+  }
 }
 
 /* ================= SELECCIONAR PRODUCTO ================= */
@@ -242,7 +334,7 @@ function enviarWA() {
     
     listaVen.innerHTML = ""; // Limpiar
     modalVen.style.display = "flex";
-    tiempoRestante = 6;
+    tiempoRestante = 10;
     timerDisplay.textContent = tiempoRestante;
 
     // Crear botones de vendedores
@@ -271,7 +363,7 @@ function finalizarYEnviar(numeroDestino) {
     clearInterval(intervaloTimer);
     document.getElementById("modalVendedor").style.display = "none";
 
-    let msg = "¡Hola Home Style 507! 👋\nMe gustaría consultar disponibilidad de:\n\n";
+    let msg = "¡Hola Home Style! 👋\nMe gustaría consultar:\n\n";
     seleccion.forEach((prod, i) => {
         msg += `• ${prod}\n`;
     });
@@ -282,25 +374,41 @@ function finalizarYEnviar(numeroDestino) {
 
 /* ================= BUSCADOR ================= */
 function filtrar(){
-  const q = document.getElementById("search").value.toLowerCase();
+  const q = (document.getElementById("search").value || "").toLowerCase().trim();
 
+  // Filtrar cards por nombre
   document.querySelectorAll(".card").forEach(card=>{
-    const nombre = card.dataset.nombre.toLowerCase();
-    const categoria = card.closest(".categoria").dataset.categoria.toLowerCase();
+    try {
+      const nombre = (card.dataset.nombre || "").toLowerCase();
+      const visible = !q || nombre.includes(q);
+      card.style.display = visible ? "" : "none";
+    } catch (error) {
+      console.error("Error en filtro de card:", error);
+    }
+  });
 
-    const visible = nombre.includes(q) || categoria.includes(q);
-    card.style.display = visible ? "" : "none";
+  // Ocultar categorías sin productos visibles
+  document.querySelectorAll(".categoria").forEach(seccion=>{
+    const tieneVisibles = Array.from(seccion.querySelectorAll(".card")).some(card => card.style.display !== "none");
+    seccion.style.display = tieneVisibles ? "" : "none";
   });
 }
 
 /* ================= FILTRO POR CATEGORÍA ================= */
 function filtrarCategoria(cat, btn){
+  if (!cat) return; // Validación de seguridad
+  
   document.getElementById("search").value = "";
 
   document.querySelectorAll("nav button").forEach(b=>{
     b.classList.remove("active");
+    b.setAttribute("aria-pressed", "false");
   });
-  btn.classList.add("active");
+  
+  if (btn) {
+    btn.classList.add("active");
+    btn.setAttribute("aria-pressed", "true");
+  }
 
   document.querySelectorAll(".categoria").forEach(sec=>{
     sec.style.display =

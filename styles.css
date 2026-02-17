@@ -14,6 +14,30 @@
   font-family:Segoe UI, Inter, system-ui, sans-serif;
 }
 
+/* ================= ACCESIBILIDAD ================= */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus visible para navegación con teclado */
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
 body{
   background:var(--bg);
   color:var(--primary);
@@ -40,18 +64,35 @@ header span{
   font-weight:800;
 }
 
+.header-tagline {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 8px;
+  font-style: italic;
+  opacity: 0.95;
+}
+
 /* ================= SEARCH ================= */
 .search-box{
   padding:14px;
+  position:relative;
 }
 
 .search-box input{
   width:100%;
   padding:16px;
   border-radius:20px;
-  border:1px solid #d0d0d0;
+  border:2px solid #d0d0d0;
   font-size:1rem;
   outline:none;
+  transition: border-color 0.3s;
+}
+
+.search-box input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(224, 183, 90, 0.1);
 }
 
 /* ================= NAV ================= */
@@ -419,4 +460,123 @@ nav button:hover{
 /* Icono de WhatsApp simulado antes del nombre del vendedor */
 .btn-vendedor::before {
   content: "💬";
-  font-size: 1.1
+  font-size: 1.1rem;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: linear-gradient(180deg, #081a33, #0c2b5e);
+  color: white;
+  padding: 40px 20px 20px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.footer-section h4 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.footer-section p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ================= SOCIAL LINKS ================= */
+.social-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  color: var(--primary);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ================= WHATSAPP LIST ================= */
+.whatsapp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.whatsapp-link {
+  display: inline-block;
+  padding: 10px 15px;
+  background: rgba(37, 211, 102, 0.2);
+  border: 1px solid var(--wa);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.whatsapp-link:hover {
+  background: var(--wa);
+  color: white;
+  transform: translateX(5px);
+}
+
+/* ================= FOOTER BOTTOM ================= */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}

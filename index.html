@@ -3,39 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Style 507 | Catálogo</title>
+  <meta name="description" content="Catálogo de productos Home Style 507: sábanas, cortinas, comedor y más. Consulta nuestros productos de alta calidad.">
+  <meta name="keywords" content="sábanas, cortinas, comedor, hogar, decoración, Panamá">
+  <meta name="author" content="Home Style 507">
+  <meta property="og:title" content="Home Style 507 | Catálogo de Productos">
+  <meta property="og:description" content="Encuentra los mejores productos para tu hogar en Home Style 507.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#081a33">
+  <title>Home Style 507 | Catálogo de Productos</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23081a33' width='100' height='100'/><text x='50' y='70' font-size='60' font-weight='bold' fill='%23e0b75a' text-anchor='middle'>HS</text></svg>">
 </head>
 
 <body>
 
-<header>
-  <h1>HOME STYLE <span>507</span></h1>
+<header role="banner">
+  <h1>HOME STYLE <span aria-label="Número 507">507</span></h1>
+  <p class="header-tagline">Lo mejor para tu Hogar y a tu Estilo</p>
 </header>
 
 <div class="search-box">
-  <input id="search" placeholder="Buscar productos..." oninput="filtrar()">
+  <input id="search" type="search" placeholder="Buscar productos..." aria-label="Buscador de productos" aria-describedby="search-hint">
+  <small id="search-hint" class="sr-only">Escribe el nombre del producto para filtrar</small>
 </div>
 
-<nav id="catNav">
-  <button class="active" onclick="filtrarCategoria('Todos',this)">Todos</button>
-  <button onclick="filtrarCategoria('Forros',this)">Forros</button>
-  <button onclick="filtrarCategoria('Sábanas',this)">Sábanas</button>
-  <button onclick="filtrarCategoria('Alfombras',this)">Alfombras</button>
-  <button onclick="filtrarCategoria('Electrónicos',this)">Electrónicos</button>
-  <button onclick="filtrarCategoria('Almohadas',this)">Almohadas</button>
-  <button onclick="filtrarCategoria('Perfumes',this)">Perfumes</button>
-  <button onclick="filtrarCategoria('Frazadas',this)">Frazadas</button>
-  <button onclick="filtrarCategoria('Toallas',this)">Toallas</button>
-  <button onclick="filtrarCategoria('Mochilas',this)">Mochilas</button>
-  <button onclick="filtrarCategoria('Carteras',this)">Carteras</button>
-  <button onclick="filtrarCategoria('Baño',this)">Baño</button>
-  <button onclick="filtrarCategoria('Cortinas',this)">Cortinas</button>
-  <button onclick="filtrarCategoria('Accesorios',this)">Accesorios</button>
-  <button onclick="filtrarCategoria('Otros',this)">Otros</button>
+<nav id="catNav" role="navigation" aria-label="Categorías de productos">
+  <button class="active" data-category="Todos" aria-pressed="true">Todos</button>
+  <button data-category="Forros" aria-pressed="false">Forros</button>
+  <button data-category="Comedor" aria-pressed="false">Comedor</button>
+  <button data-category="Sábanas" aria-pressed="false">Sábanas</button>
+  <button data-category="Alfombras" aria-pressed="false">Alfombras</button>
+  <button data-category="Electrónicos" aria-pressed="false">Electrónicos</button>
+  <button data-category="Almohadas" aria-pressed="false">Almohadas</button>
+  <button data-category="Perfumes" aria-pressed="false">Perfumes</button>
+  <button data-category="Frazadas" aria-pressed="false">Frazadas</button>
+  <button data-category="Toallas" aria-pressed="false">Toallas</button>
+  <button data-category="Mochilas" aria-pressed="false">Mochilas</button>
+  <button data-category="Carteras" aria-pressed="false">Carteras</button>
+  <button data-category="Baño" aria-pressed="false">Baño</button>
+  <button data-category="Cortinas" aria-pressed="false">Cortinas</button>
+  <button data-category="Accesorios" aria-pressed="false">Accesorios</button>
+  <button data-category="Otros" aria-pressed="false">Otros</button>
 </nav>
 
-<main id="catalogo">
+<main id="catalogo" role="main" aria-label="Catálogo de productos">
 
 <!-- ================= FORROS ================= -->
 <section class="categoria" data-categoria="Forros">
@@ -53,7 +64,7 @@
     data-descripcion="Dale un toque de elegancia y protección a tu hogar con este set completo. Incluye 6 forros para sillas diseñados con delicadas ruchas que aportan un estilo clásico y sofisticado, además de un mantel a juego. Fabricado en tela elástica de alta calidad que se ajusta perfectamente y es fácil de lavar. Ideal para renovar tu comedor al instante." 
     data-precio="$26.75" 
     data-images="img/comedor/01/1.jpeg,img/comedor/01/2.jpeg,img/comedor/01/3.jpeg,img/comedor/01/4.jpeg,img/comedor/01/5.jpeg,img/comedor/01/6.jpeg">
-    <img onclick="abrirModal(this)" src="img/comedor/01/1.jpeg">
+    <img src="img/comedor/01/1.jpeg" alt="Juego de Comedor 6 Puestos con Ruchas y Mantel" loading="lazy">
     <div class="card-info">
         <h3>Juego de Comedor 6 Puestos</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
@@ -71,7 +82,7 @@
     data-descripcion="Disfruta del máximo confort con la Colección Pera de Bouquetex. Juego de sábanas de textura ultra suave, transpirable y resistente a las arrugas. Incluye: 2 sábanas (plana y ajustable) y 2 fundas de almohada. Ideal para un descanso fresco y renovador." 
     data-precio="$23.54" 
     data-images="img/sabanas/01/1.jpg,img/sabanas/01/2.jpg,img/sabanas/01/3.jpg,img/sabanas/01/4.jpg,img/sabanas/01/5.jpg,img/sabanas/01/6.jpg,img/sabanas/01/7.jpg,img/sabanas/01/8.jpg,img/sabanas/01/9.jpg,img/sabanas/01/10.jpg,img/sabanas/01/11.jpg,img/sabanas/01/12.jpg">
-    <img onclick="abrirModal(this)" src="img/sabanas/01/1.jpg">
+    <img src="img/sabanas/01/1.jpg" alt="Sábanas Bouquetex Colección Pera - Twin" loading="lazy">
     <div class="card-info">
         <h3>Sábanas Bouquetex Pera (Twin)</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
@@ -82,8 +93,8 @@
     data-nombre="Sábanas Bouquetex Colección Pera - Full" 
     data-descripcion="Eleva el estilo de tu habitación con Bouquetex. Microfibra premium de alta densidad que ofrece una suavidad excepcional al tacto. El juego Full incluye: 2 sábanas y 4 fundas de almohada. Tecnología de color duradero que no desvanece con las lavadas." 
     data-precio="$24.61" 
-    data-images="img/sabanas/02/1.jpg,img/sabanas/02/2.jpg,img/sabanas/02/3.jpg,img/sabanas/02/4.jpg,img/sabanas/02/5.jpg,img/sabanas/02/6.jpg,img/sabanas/02/7.jpg,img/sabanas/02/8.jpg,img/sabanas/02/9.jpg,img/sabanas/02/10.jpg,img/sabanas/02/11.jpg,img/sabanas/02/12.jpg">
-    <img onclick="abrirModal(this)" src="img/sabanas/02/4.jpg">
+    data-images="img/sabanas/01/1.jpg,img/sabanas/01/2.jpg,img/sabanas/01/3.jpg,img/sabanas/01/4.jpg,img/sabanas/01/5.jpg,img/sabanas/01/6.jpg,img/sabanas/01/7.jpg,img/sabanas/01/8.jpg,img/sabanas/01/9.jpg,img/sabanas/01/10.jpg,img/sabanas/01/11.jpg,img/sabanas/01/12.jpg">
+    <img src="img/sabanas/01/4.jpg" alt="Sábanas Bouquetex Colección Pera - Full" loading="lazy">
     <div class="card-info">
         <h3>Sábanas Bouquetex Pera (Full)</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
@@ -94,8 +105,8 @@
     data-nombre="Sábanas Bouquetex Colección Pera - Queen" 
     data-descripcion="Lujo y confort diseñado para camas Queen. La colección Pera se distingue por su acabado sedoso y elegante. Incluye: 2 sábanas y 4 fundas de almohada de tamaño estándar. Tejido hipoalergénico y fresco, perfecto para el clima de Panamá." 
     data-precio="$26.75" 
-    data-images="img/sabanas/03/1.jpg,img/sabanas/03/2.jpg,img/sabanas/03/3.jpg,img/sabanas/03/4.jpg,img/sabanas/03/5.jpg,img/sabanas/03/6.jpg,img/sabanas/03/7.jpg,img/sabanas/03/8.jpg,img/sabanas/03/9.jpg,img/sabanas/03/10.jpg,img/sabanas/03/11.jpg,img/sabanas/03/12.jpg">
-    <img onclick="abrirModal(this)" src="img/sabanas/03/7.jpg">
+    data-images="img/sabanas/01/1.jpg,img/sabanas/01/2.jpg,img/sabanas/01/3.jpg,img/sabanas/01/4.jpg,img/sabanas/01/5.jpg,img/sabanas/01/6.jpg,img/sabanas/01/7.jpg,img/sabanas/01/8.jpg,img/sabanas/01/9.jpg,img/sabanas/01/10.jpg,img/sabanas/01/11.jpg,img/sabanas/01/12.jpg">
+    <img src="img/sabanas/01/7.jpg" alt="Sábanas Bouquetex Colección Pera - Queen" loading="lazy">
     <div class="card-info">
         <h3>Sábanas Bouquetex Pera (Queen)</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
@@ -106,8 +117,8 @@
     data-nombre="Sábanas Bouquetex Colección Pera - King" 
     data-descripcion="La máxima expresión de amplitud y confort. Juego de sábanas King de la prestigiosa marca Bouquetex. Tejido de fácil cuidado que mantiene su forma y suavidad. Incluye: 2 sábanas y 4 fundas de almohada King size. Un toque de elegancia superior para tu hogar." 
     data-precio="$27.82" 
-    data-images="img/sabanas/04/1.jpg,img/sabanas/04/2.jpg,img/sabanas/04/3.jpg,img/sabanas/04/4.jpg,img/sabanas/04/5.jpg,img/sabanas/04/6.jpg,img/sabanas/04/7.jpg,img/sabanas/04/8.jpg,img/sabanas/04/9.jpg,img/sabanas/04/10.jpg,img/sabanas/04/11.jpg,img/sabanas/04/12.jpg">
-    <img onclick="abrirModal(this)" src="img/sabanas/04/10.jpg">
+    data-images="img/sabanas/01/1.jpg,img/sabanas/01/2.jpg,img/sabanas/01/3.jpg,img/sabanas/01/4.jpg,img/sabanas/01/5.jpg,img/sabanas/01/6.jpg,img/sabanas/01/7.jpg,img/sabanas/01/8.jpg,img/sabanas/01/9.jpg,img/sabanas/01/10.jpg,img/sabanas/01/11.jpg,img/sabanas/01/12.jpg">
+    <img src="img/sabanas/01/10.jpg" alt="Sábanas Bouquetex Colección Pera - King" loading="lazy">
     <div class="card-info">
         <h3>Sábanas Bouquetex Pera (King)</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
@@ -119,7 +130,7 @@
     data-descripcion="Línea Premium de Bouquetex en colores sólidos. Aporta serenidad y elegancia a tu habitación con este juego de sábanas de tacto sedoso y acabado mate. El set incluye: 2 sábanas de alta resistencia y 2 fundas de almohada. Tejido transpirable de fácil secado, diseñado para mantener su color original lavado tras lavado." 
     data-precio="$22.47" 
     data-images="img/sabanas/05/1.jpeg,img/sabanas/05/2.jpeg,img/sabanas/05/3.jpeg,img/sabanas/05/4.jpeg,img/sabanas/05/5.jpeg,img/sabanas/05/6.jpeg,img/sabanas/05/7.jpeg,img/sabanas/05/8.jpeg,img/sabanas/05/9.jpeg,img/sabanas/05/10.jpeg,img/sabanas/05/11.jpeg,img/sabanas/05/12.jpeg,img/sabanas/05/13.jpeg,img/sabanas/05/14.jpeg">
-    <img onclick="abrirModal(this)" src="img/sabanas/05/2.jpeg">
+    <img src="img/sabanas/05/2.jpeg" alt="Sábanas Bouquetex Premium Unicolor - Full" loading="lazy">
     <div class="card-info">
         <h3>Sábanas Bouquetex Unicolor (Full)</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
@@ -130,8 +141,8 @@
     data-nombre="Sábanas Bouquetex Premium Unicolor - Queen" 
     data-descripcion="Sofisticación unicolor para tu cama Queen. Este juego de sábanas Bouquetex Premium destaca por su suavidad superior y frescura inigualable. Ideal para quienes buscan un estilo moderno y limpio. Incluye: 2 sábanas (plana y ajustable) y 2 fundas de almohada. Hipoalergénicas y resistentes a las arrugas." 
     data-precio="$23.54" 
-    data-images="img/sabanas/06/1.jpeg,img/sabanas/06/2.jpeg,img/sabanas/06/3.jpeg,img/sabanas/06/4.jpeg,img/sabanas/06/5.jpeg,img/sabanas/06/6.jpeg,img/sabanas/06/7.jpeg,img/sabanas/06/8.jpeg,img/sabanas/06/9.jpeg,img/sabanas/06/10.jpeg,img/sabanas/06/11.jpeg,img/sabanas/06/12.jpeg,img/sabanas/06/13.jpeg,img/sabanas/06/14.jpeg">
-    <img onclick="abrirModal(this)" src="img/sabanas/06/10.jpeg">
+    data-images="img/sabanas/05/1.jpeg,img/sabanas/05/2.jpeg,img/sabanas/05/3.jpeg,img/sabanas/05/4.jpeg,img/sabanas/05/5.jpeg,img/sabanas/05/6.jpeg,img/sabanas/05/7.jpeg,img/sabanas/05/8.jpeg,img/sabanas/05/9.jpeg,img/sabanas/05/10.jpeg,img/sabanas/05/11.jpeg,img/sabanas/05/12.jpeg,img/sabanas/05/13.jpeg,img/sabanas/05/14.jpeg">
+    <img src="img/sabanas/05/10.jpeg" alt="Sábanas Bouquetex Premium Unicolor - Queen" loading="lazy">
     <div class="card-info">
         <h3>Sábanas Bouquetex Unicolor (Queen)</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
@@ -142,10 +153,22 @@
     data-nombre="Sábanas Bouquetex Premium Unicolor - King" 
     data-descripcion="Máximo lujo en formato King. La línea unicolor Premium de Bouquetex ofrece una experiencia de descanso de hotel en tu hogar. Tejido de alta densidad que garantiza durabilidad y una caída perfecta sobre el colchón. El set incluye: 2 sábanas amplias y 2 fundas de almohada King. Elegancia minimalista que nunca pasa de moda." 
     data-precio="$25.68" 
-    data-images="img/sabanas/07/1.jpeg,img/sabanas/07/2.jpeg,img/sabanas/07/3.jpeg,img/sabanas/07/4.jpeg,img/sabanas/07/5.jpeg,img/sabanas/07/6.jpeg,img/sabanas/07/7.jpeg,img/sabanas/07/8.jpeg,img/sabanas/07/9.jpeg,img/sabanas/07/10.jpeg,img/sabanas/07/11.jpeg,img/sabanas/07/12.jpeg,img/sabanas/07/13.jpeg,img/sabanas/07/14.jpeg">
-    <img onclick="abrirModal(this)" src="img/sabanas/07/6.jpeg">
+    data-images="img/sabanas/05/1.jpeg,img/sabanas/05/2.jpeg,img/sabanas/05/3.jpeg,img/sabanas/05/4.jpeg,img/sabanas/05/5.jpeg,img/sabanas/05/6.jpeg,img/sabanas/05/7.jpeg,img/sabanas/05/8.jpeg,img/sabanas/05/9.jpeg,img/sabanas/05/10.jpeg,img/sabanas/05/11.jpeg,img/sabanas/05/12.jpeg,img/sabanas/05/13.jpeg,img/sabanas/05/14.jpeg">
+    <img src="img/sabanas/05/6.jpeg" alt="Sábanas Bouquetex Premium Unicolor - King" loading="lazy">
     <div class="card-info">
         <h3>Sábanas Bouquetex Unicolor (King)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Súper Oferta 12 Sábanas Full (4 Piezas)" 
+    data-descripcion="Súper oferta: Docena de sábanas Full, de buena calidad con 4 piezas cada una. Conjunto completo para aprovechar." 
+    data-precio="$64.20" 
+    data-images="img/sabanas/08/1.jpeg,img/sabanas/08/2.jpeg,img/sabanas/08/3.jpeg,img/sabanas/08/4.jpeg,img/sabanas/08/5.jpeg,img/sabanas/08/6.jpeg,img/sabanas/08/7.jpeg,img/sabanas/08/8.jpeg,img/sabanas/08/9.jpeg,img/sabanas/08/10.jpeg,img/sabanas/08/11.jpeg,img/sabanas/08/12.jpeg,img/sabanas/08/13.jpeg,img/sabanas/08/14.jpeg,img/sabanas/08/15.jpeg,img/sabanas/08/16.jpeg,img/sabanas/08/17.jpeg,img/sabanas/08/18.jpeg,img/sabanas/08/19.jpeg,img/sabanas/08/20.jpeg,img/sabanas/08/21.jpeg,img/sabanas/08/22.jpeg,img/sabanas/08/23.jpeg,img/sabanas/08/24.jpeg,img/sabanas/08/25.jpeg">
+    <img src="img/sabanas/08/1.jpeg" alt="Súper Oferta 12 Sábanas Full (4 Piezas)" loading="lazy">
+    <div class="card-info">
+        <h3>Oferta 12 Sábanas Full</h3>
         <button onclick="toggleProducto(this)">Consultar</button>
     </div>
 </article>
@@ -184,6 +207,17 @@
 <section class="categoria" data-categoria="Frazadas">
 <h2 class="category-title">Frazadas</h2>
 <div class="grid">
+<article class="card" 
+    data-nombre="Frazadas Full/Queen Reversibles" 
+    data-descripcion="Frazadas gruesas reversibles Full/Queen que parecen colchas. Confeccionadas con tela de alta densidad y calidad garantizada, perfectas para abrigarte en las noches frías. Su diseño reversible te permite elegir entre dos estilos diferentes. Tejido suave y duradero que mantiene su forma después de múltiples lavadas. Ideal para camas grandes con máximo confort." 
+    data-precio="$8.56" 
+    data-images="img/frazadas/01/1.jpeg,img/frazadas/01/2.jpeg,img/frazadas/01/3.jpeg,img/frazadas/01/4.jpeg,img/frazadas/01/5.jpeg,img/frazadas/01/6.jpeg,img/frazadas/01/7.jpeg,img/frazadas/01/8.jpeg,img/frazadas/01/9.jpeg,img/frazadas/01/10.jpeg,img/frazadas/01/11.jpeg,img/frazadas/01/12.jpeg,img/frazadas/01/13.jpeg,img/frazadas/01/14.jpeg,img/frazadas/01/15.jpeg,img/frazadas/01/16.jpeg,img/frazadas/01/17.jpeg,img/frazadas/01/18.jpeg,img/frazadas/01/19.jpeg,img/frazadas/01/20.jpeg,img/frazadas/01/21.jpeg,img/frazadas/01/22.jpeg,img/frazadas/01/23.jpeg">
+    <img src="img/frazadas/01/1.jpeg" alt="Frazadas Full/Queen Reversibles" loading="lazy">
+    <div class="card-info">
+        <h3>Frazadas Full/Queen Reversibles</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
 </div>
 </section>
 
@@ -191,6 +225,29 @@
 <section class="categoria" data-categoria="Toallas">
 <h2 class="category-title">Toallas</h2>
 <div class="grid">
+<article class="card" 
+    data-nombre="Toallas de Niño de Caricaturas Famosas (27x54)" 
+    data-descripcion="Toallas suaves con estampados de caricaturas favoritas de los niños. Tamaño 27x54 cm, perfectas para la playa, piscina o uso diario. Tejido absorbente y de secado rápido, ideal para mantener a los pequeños cómodos y protegidos." 
+    data-precio="$5.35" 
+    data-images="img/toallas/01/1.jpeg,img/toallas/01/2.jpeg,img/toallas/01/3.jpeg,img/toallas/01/4.jpeg,img/toallas/01/5.jpeg,img/toallas/01/6.jpeg,img/toallas/01/7.jpeg,img/toallas/01/8.jpeg,img/toallas/01/9.jpeg,img/toallas/01/10.jpeg,img/toallas/01/11.jpeg,img/toallas/01/12.jpeg">
+    <img src="img/toallas/01/1.jpeg" alt="Toallas de Niño de Caricaturas Famosas (27x54)" loading="lazy">
+    <div class="card-info">
+        <h3>Toallas de Niño (27x54)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Toallas de Niño Nuevas (27x54)" 
+    data-descripcion="Toallas de niño de tamaño 27x54." 
+    data-precio="$5.35" 
+    data-images="img/toallas/02/1.jpeg,img/toallas/02/2.jpeg,img/toallas/02/3.jpeg,img/toallas/02/4.jpeg,img/toallas/02/5.jpeg,img/toallas/02/6.jpeg,img/toallas/02/7.jpeg,img/toallas/02/8.jpeg,img/toallas/02/9.jpeg,img/toallas/02/10.jpeg,img/toallas/02/11.jpeg,img/toallas/02/12.jpeg">
+    <img src="img/toallas/02/1.jpeg" alt="Toallas de Niño Nuevas (27x54)" loading="lazy">
+    <div class="card-info">
+        <h3>Toallas de Niño Nuevas (27x54)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
 </div>
 </section>
 
@@ -220,7 +277,7 @@
 <section class="categoria" data-categoria="Cortinas">
 <h2 class="category-title">Cortinas</h2>
 <div class="grid">
-<article class="card" data-nombre="Elegante Cortinas Combinada Lisa y Estampada Blackout" data-descripcion="Pasion Guajira, Elegante Cortinas Combinada Lisa y Estampada Blackout, medidas 54' x 88' / 137cm x 223cm, 2 paños (1 unicolor y 1 estampado)." data-precio="$16.05" data-images="img/cortinas/01/1.jpg,img/cortinas/01/2.jpg,img/cortinas/01/3.jpg,img/cortinas/01/4.jpg,img/cortinas/01/5.jpg,img/cortinas/01/6.jpg"><img onclick="abrirModal(this)" src="img/cortinas/01/1.jpg"><div class="card-info"><h3>Elegante Cortinas Combinada Lisa y Estampada Blackout</h3><button onclick="toggleProducto(this)">Consultar</button></div></article>
+<article class="card" data-nombre="Elegante Cortinas Combinada Lisa y Estampada Blackout" data-descripcion="Pasion Guajira, Elegante Cortinas Combinada Lisa y Estampada Blackout, medidas 54' x 88' / 137cm x 223cm, 2 paños (1 unicolor y 1 estampado)." data-precio="$16.05" data-images="img/cortinas/01/1.jpg,img/cortinas/01/2.jpg,img/cortinas/01/3.jpg,img/cortinas/01/4.jpg,img/cortinas/01/5.jpg,img/cortinas/01/6.jpg"><img src="img/cortinas/01/1.jpg" alt="Elegante Cortinas Combinada Lisa y Estampada Blackout" loading="lazy"><div class="card-info"><h3>Elegante Cortinas Combinada Lisa y Estampada Blackout</h3><button onclick="toggleProducto(this)">Consultar</button></div></article>
 </div>
 </section>
 
@@ -235,15 +292,170 @@
 <section class="categoria" data-categoria="Otros">
 <h2 class="category-title">Otros</h2>
 <div class="grid">
+<article class="card" 
+    data-nombre="Medias de Mujer (Docena)" 
+    data-descripcion="Docena de medias de mujer. Conjunto de 12 pares listos para tu uso diario. Cómodas y versátiles para cualquier ocasión." 
+    data-precio="$5.35" 
+    data-images="img/otros/01/1.jpeg">
+    <img src="img/otros/01/1.jpeg" alt="Medias de Mujer (Docena)" loading="lazy">
+    <div class="card-info">
+        <h3>Medias de Mujer (Docena)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Short Deportivo (Docena)" 
+    data-descripcion="Docena de shorts deportivos. Colores disponibles. Talla única." 
+    data-precio="$44.94" 
+    data-images="img/otros/02/1.jpeg,img/otros/02/2.jpeg">
+    <img src="img/otros/02/1.jpeg" alt="Short Deportivo (Docena)" loading="lazy">
+    <div class="card-info">
+        <h3>Short Deportivo (Docena)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Short Deportivo (Unidad)" 
+    data-descripcion="Short deportivo por unidad. Colores disponibles. Talla única." 
+    data-precio="$4.28" 
+    data-images="img/otros/02/1.jpeg,img/otros/02/2.jpeg">
+    <img src="img/otros/02/1.jpeg" alt="Short Deportivo (Unidad)" loading="lazy">
+    <div class="card-info">
+        <h3>Short Deportivo (Unidad)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Conjunto Deportivo Short (Docena)" 
+    data-descripcion="Docena de conjuntos deportivos con short. Colores disponibles. Talla única." 
+    data-precio="$51.36" 
+    data-images="img/otros/04/1.jpeg,img/otros/04/2.jpeg">
+    <img src="img/otros/04/1.jpeg" alt="Conjunto Deportivo Short (Docena)" loading="lazy">
+    <div class="card-info">
+        <h3>Conjunto Deportivo Short (Docena)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Conjunto Deportivo Short (Unidad)" 
+    data-descripcion="Conjunto deportivo con short por unidad. Colores disponibles. Talla única." 
+    data-precio="$5.35" 
+    data-images="img/otros/04/1.jpeg,img/otros/04/2.jpeg">
+    <img src="img/otros/04/1.jpeg" alt="Conjunto Deportivo Short (Unidad)" loading="lazy">
+    <div class="card-info">
+        <h3>Conjunto Deportivo Short (Unidad)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Conjunto Deportivo Premium (Docena)" 
+    data-descripcion="Docena de conjuntos deportivos premium con short. Colores disponibles. Talla única." 
+    data-precio="$101.65" 
+    data-images="img/otros/06/1.jpeg,img/otros/06/2.jpeg">
+    <img src="img/otros/06/1.jpeg" alt="Conjunto Deportivo Premium (Docena)" loading="lazy">
+    <div class="card-info">
+        <h3>Conjunto Deportivo Premium (Docena)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Conjunto Deportivo Premium (Unidad)" 
+    data-descripcion="Conjunto deportivo premium con short por unidad. Colores disponibles. Talla única." 
+    data-precio="$9.63" 
+    data-images="img/otros/06/2.jpeg,img/otros/06/1.jpeg">
+    <img src="img/otros/06/1.jpeg" alt="Conjunto Deportivo Premium (Unidad)" loading="lazy">
+    <div class="card-info">
+        <h3>Conjunto Deportivo Premium (Unidad)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Conjunto Deportivo Largo (Docena)" 
+    data-descripcion="Docena de conjuntos deportivos largo. Colores disponibles. Talla única." 
+    data-precio="$64.20" 
+    data-images="img/otros/08/1.jpeg,img/otros/08/2.jpeg">
+    <img src="img/otros/08/1.jpeg" alt="Conjunto Deportivo Largo (Docena)" loading="lazy">
+    <div class="card-info">
+        <h3>Conjunto Deportivo Largo (Docena)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Conjunto Deportivo Largo (Unidad)" 
+    data-descripcion="Conjunto deportivo largo por unidad. Colores disponibles. Talla única." 
+    data-precio="$6.42" 
+    data-images="img/otros/08/2.jpeg,img/otros/08/1.jpeg">
+    <img src="img/otros/08/1.jpeg" alt="Conjunto Deportivo Largo (Unidad)" loading="lazy">
+    <div class="card-info">
+        <h3>Conjunto Deportivo Largo (Unidad)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Conjunto Deportivo (Docena)" 
+    data-descripcion="Docena de conjuntos deportivos. Colores disponibles. Talla única." 
+    data-precio="$51.36" 
+    data-images="img/otros/10/1.jpeg,img/otros/10/2.jpeg">
+    <img src="img/otros/10/1.jpeg" alt="Conjunto Deportivo (Docena)" loading="lazy">
+    <div class="card-info">
+        <h3>Conjunto Deportivo (Docena)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Conjunto Deportivo (Unidad)" 
+    data-descripcion="Conjunto deportivo por unidad. Colores disponibles. Talla única." 
+    data-precio="$5.35" 
+    data-images="img/otros/10/2.jpeg,img/otros/10/1.jpeg">
+    <img src="img/otros/10/1.jpeg" alt="Conjunto Deportivo (Unidad)" loading="lazy">
+    <div class="card-info">
+        <h3>Conjunto Deportivo (Unidad)</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Docena de Esponjas" 
+    data-descripcion="Docena de esponjas. Cantidad: 12 unidades." 
+    data-precio="$2.14" 
+    data-images="img/otros/12/1.jpeg">
+    <img src="img/otros/12/1.jpeg" alt="Docena de Esponjas" loading="lazy">
+    <div class="card-info">
+        <h3>Docena de Esponjas</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
+
+<article class="card" 
+    data-nombre="Toallitas Multiuso" 
+    data-descripcion="Toallitas multiuso. 30 unidades." 
+    data-precio="$7.49" 
+    data-images="img/otros/13/1.jpeg">
+    <img src="img/otros/13/1.jpeg" alt="Toallitas Multiuso" loading="lazy">
+    <div class="card-info">
+        <h3>Toallitas Multiuso</h3>
+        <button onclick="toggleProducto(this)">Consultar</button>
+    </div>
+</article>
 </div>
 </section>
 
 </main>
 
 <!-- ================= MODAL IMAGEN ================= -->
-<div id="modalImagen">
+<div id="modalImagen" role="dialog" aria-modal="true" aria-labelledby="modalNombre">
   <div class="modal-caja">
-    <button class="modal-cerrar" onclick="cerrarModal()">×</button>
+    <button class="modal-cerrar" onclick="cerrarModal()" aria-label="Cerrar ventana modal">×</button>
     <img id="modalImg" src="" alt="">
     <div class="modal-cuerpo">
       <h2 id="modalNombre"></h2>
@@ -254,8 +466,8 @@
   </div>
 </div>
 
-<div class="float-wa" onclick="enviarWA()">
-  Consultar (<span id="count">0</span>)
+<div class="float-wa" onclick="enviarWA()" role="button" tabindex="0" aria-label="Consultar productos seleccionados por WhatsApp">
+  Consultar (<span id="count" aria-live="polite">0</span>)
 </div>
 
 <div id="modalVendedor" style="display:none;" class="modal-vendedor-overlay">
@@ -266,6 +478,93 @@
   </div>
 </div>
 
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo y Descripción -->
+    <div class="footer-section">
+      <h3>HOME STYLE 507</h3>
+      <p>Encuentra los mejores productos para tu hogar. Sábanas, cortinas, decoración y mucho más.</p>
+    </div>
+
+    <!-- Redes Sociales -->
+    <div class="footer-section">
+      <h4>Síguenos</h4>
+      <div class="social-links">
+        <a href="https://www.instagram.com/homeystyle.507/" target="_blank" rel="noopener noreferrer" aria-label="Instagram homeystyle.507">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/homeystylepty/" target="_blank" rel="noopener noreferrer" aria-label="Instagram homeystylepty">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/homeystyle507/" target="_blank" rel="noopener noreferrer" aria-label="Instagram homeystyle507">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- TikTok -->
+    <div class="footer-section">
+      <h4>TikTok</h4>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@homeystyle.507?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok homeystyle.507">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.1 1.75 2.9 2.9 0 0 1 2.31-4.64 2.88 2.88 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.08A6.081 6.081 0 0 0 5 20.1a6.081 6.081 0 0 0 6.04 6.09q.5 0 1-.03v-3.63a4.84 4.84 0 0 0 3.54-4.33V22h3.45V11.4a7.816 7.816 0 0 0 3.54-1.09v-3.62z"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@homeystylepty07?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok homeystylepty07">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.1 1.75 2.9 2.9 0 0 1 2.31-4.64 2.88 2.88 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.08A6.081 6.081 0 0 0 5 20.1a6.081 6.081 0 0 0 6.04 6.09q.5 0 1-.03v-3.63a4.84 4.84 0 0 0 3.54-4.33V22h3.45V11.4a7.816 7.816 0 0 0 3.54-1.09v-3.62z"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@home.style.507?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok home.style.507">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.1 1.75 2.9 2.9 0 0 1 2.31-4.64 2.88 2.88 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.08A6.081 6.081 0 0 0 5 20.1a6.081 6.081 0 0 0 6.04 6.09q.5 0 1-.03v-3.63a4.84 4.84 0 0 0 3.54-4.33V22h3.45V11.4a7.816 7.816 0 0 0 3.54-1.09v-3.62z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="footer-section">
+      <h4>WhatsApp</h4>
+      <div class="whatsapp-list">
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="whatsapp-link" aria-label="WhatsApp cuenta 1">Chat 1</a>
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="whatsapp-link" aria-label="WhatsApp cuenta 2">Chat 2</a>
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="whatsapp-link" aria-label="WhatsApp cuenta 3">Chat 3</a>
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="whatsapp-link" aria-label="WhatsApp cuenta 4">Chat 4</a>
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="whatsapp-link" aria-label="WhatsApp cuenta 5">Chat 5</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    <p>&copy; 2026 Home Style 507. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
 <script src="script.js"></script>
+
+<!-- ================= STRUCTURED DATA (JSON-LD) ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Organization",
+  "name": "Home Style 507",
+  "url": "https://homestyle507.com",
+  "description": "Catálogo de productos para el hogar: sábanas, cortinas, comedor y más"
+}
+</script>
+
+<!-- ================= ANALYTICS Y TRACKING (Opcional) ================= -->
+<meta name="google" content="nositelinkssearchbox">
+
 </body>
 </html>
